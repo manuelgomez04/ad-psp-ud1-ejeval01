@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "fbd50343-21a0-4355-bbd5-77b47393fe4a",
+		"name": "Bar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38617630"
+	},
+	"item": [
+		{
+			"name": "GetBares",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{initial_route}}/",
+					"host": [
+						"{{initial_route}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{initial_route}}/1",
+					"host": [
+						"{{initial_route}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddBar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{initial_route}}/",
+					"host": [
+						"{{initial_route}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "initial_route",
+			"value": "localhost:8080/place",
+			"type": "string"
+		}
+	]
+}

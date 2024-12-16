@@ -16,7 +16,28 @@ public class PlaceRepository {
 
     @PostConstruct
     public void init() {
-        // Añadir aquí datos de ejemplo
+
+
+        add(Place.builder().name("Bar Paqui")
+                .address("Calle Hermanos López")
+                .coords("13654.00, 13545.00")
+                .desc("Bar increíble")
+                .image("sin_imagen.png").build());
+        add(Place.builder().name("Bar Paqui")
+                .address("Calle Hermanos López")
+                .coords("13654.00, 13545.00")
+                .desc("Bar increíble")
+                .image("sin_imagen.png")
+                .build()
+        );
+        add(Place.builder().name("Bar Paqui")
+                .address("Calle Hermanos López")
+                .coords("13654.00, 13545.00")
+                .desc("Bar increíble")
+                .image("sin_imagen.png")
+                .build());
+
+
     }
 
     public Place add(Place place) {
@@ -35,7 +56,7 @@ public class PlaceRepository {
     }
 
     public Optional<Place> edit(Long id, Place place) {
-        return Optional.ofNullable(places.computeIfPresent(id, (k,v) -> {
+        return Optional.ofNullable(places.computeIfPresent(id, (k, v) -> {
             v.setName(place.getName());
             v.setDesc(place.getDesc());
             v.setImage(place.getImage());
