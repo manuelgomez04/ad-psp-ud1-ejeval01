@@ -1,10 +1,16 @@
 package com.salesianostriana.dam.resteval;
 
+import com.salesianostriana.dam.resteval.dto.CreatePlaceDto;
+import com.salesianostriana.dam.resteval.dto.GetPlaceDTO;
+import com.salesianostriana.dam.resteval.dto.ListGetPlaceDto;
 import lombok.AllArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @RestController
@@ -17,41 +23,44 @@ public class PlaceController {
 
 
     @GetMapping("/")
-    public List<Place> getAllBares() {
+    public ListGetPlaceDto getAllBares() {
 
-        return placeService.getAll().getBody();
+        return placeService.getAll();
     }
 
     @GetMapping("/{id}")
     public Place getBar(@PathVariable Long id) {
-        return placeService.get(id).getBody();
+        return placeService.getById(id);
     }
 
     @PostMapping("/")
-    public Place addBar(@RequestBody Place place) {
-        return placeService.add(place).getBody();
+    public ResponseEntity<Place> addBar(@RequestBody CreatePlaceDto dto) {
+        return ResponseEntity.status(201).body(placeService.add(dto.toPlace()));
     }
 
     @PutMapping("/{id}")
-    public Place editBar(@PathVariable Long id, @RequestBody Place place) {
-        return placeService.edit(id, place).getBody();
+    public Place editBar(@PathVariable Long id, @RequestBody CreatePlaceDto dto) {
+        return placeService.edit(id, dto.toPlace());
     }
 
     @PutMapping("/{id}/tag/add/{nuevo_tag}  ")
     public Place addTag(@PathVariable Long id, @PathVariable String nuevoTag) {
-        placeService.get(id).getBody().addTag(nuevoTag);
-        return placeService.get(id).getBody();
+        placeService.getById(id).addTag(nuevoTag);
+        return placeService.getById(id);
     }
 
     @PutMapping("/{id}/tag/del/{tag}")
-    public Place removeTag(@PathVariable Long id, @PathVariable String nuevoTag) {
-        placeService.get(id).getBody().removeTag(nuevoTag);
-        return placeService.get(id).getBody();
+    public Place removeTag(@PathVariable Long id, @PathVariable String tag) {
+        placeService.getById(id).removeTag(dto.toPlace().getTags();
+        return placeService.getById(id);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBar(@PathVariable Long id) {
+    public ResponseEntity<?> deleteBar(@PathVariable Long id) {
+
         placeService.delete(id);
+        return ResponseEntity.noContent().build();
     }
+
 
 }

@@ -3,6 +3,7 @@ package com.salesianostriana.dam.resteval;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -22,12 +23,15 @@ public class PlaceRepository {
                 .address("Calle Hermanos López")
                 .coords("13654.00, 13545.00")
                 .desc("Bar increíble")
-                .image("sin_imagen.png").build());
+                .image("sin_imagen.png")
+                .tags(new ArrayList<>(List.of("Casero", "Italiano")))
+                .build());
         add(Place.builder().name("Bar Paqui")
                 .address("Calle Hermanos López")
                 .coords("13654.00, 13545.00")
                 .desc("Bar increíble")
                 .image("sin_imagen.png")
+                .tags(new ArrayList<>(List.of("Moderno", "Japonés")))
                 .build()
         );
         add(Place.builder().name("Bar Paqui")
@@ -35,6 +39,7 @@ public class PlaceRepository {
                 .coords("13654.00, 13545.00")
                 .desc("Bar increíble")
                 .image("sin_imagen.png")
+                .tags(new ArrayList<>(List.of("Comida Rápida", "Nuevo")))
                 .build());
 
 
@@ -66,9 +71,16 @@ public class PlaceRepository {
         }));
     }
 
+    public Optional<Place> editTag(){
+        return Optional.ofNullable(places.computeIfPresent(id, (k,v)-> {
+            v.se
+        }))
+    }
+
     public void delete(Long id) {
         places.remove(id);
     }
+
 
 
 }

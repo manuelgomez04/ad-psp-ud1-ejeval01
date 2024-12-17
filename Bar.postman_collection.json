@@ -45,6 +45,15 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Bar Paqui\",\r\n    \"address\": \"Calle Hermanos López\",\r\n    \"coords\": \"13654.00, 13545.00\",\r\n    \"desc\": \"Bar increíble\",\r\n    \"tags\": [],\r\n    \"image\": \"sin_imagen.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "{{initial_route}}/",
 					"host": [
@@ -52,6 +61,78 @@
 					],
 					"path": [
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 15,\r\n    \"name\": \"Bar Paquirri\",\r\n    \"address\": \"Calle Hermanos López\",\r\n    \"coords\": \"13654.00, 13545.00\",\r\n    \"desc\": \"Bar increíble\",\r\n    \"tags\": [],\r\n    \"image\": \"sin_imagen.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{initial_route}}/1",
+					"host": [
+						"{{initial_route}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{initial_route}}/1",
+					"host": [
+						"{{initial_route}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Bar Paquirri\",\r\n    \"address\": \"Calle Hermanos López\",\r\n    \"coords\": \"13654.00, 13545.00\",\r\n    \"desc\": \"Bar increíble\",\r\n    \"tags\": [\r\n        \"casero\",\r\n        \"Italiano\"\r\n    ],\r\n    \"image\": \"sin_imagen.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{initial_route}}/1/tag/add/Casero",
+					"host": [
+						"{{initial_route}}"
+					],
+					"path": [
+						"1",
+						"tag",
+						"add",
+						"Casero"
 					]
 				}
 			},
