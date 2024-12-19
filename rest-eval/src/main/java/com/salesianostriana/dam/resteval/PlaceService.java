@@ -35,10 +35,37 @@ public class PlaceService {
 
     }
 
-    public Place addTag(Long id, String tag) {
+    public Place addTagToPlace(Long id, String tag) {
+        // Buscar el place
+        // Añadir el tag
+        // Modificar el place
+        Optional<Place> placeOpt = placeRepository.get(id);
+        Place place = null;
+        if (placeOpt.isPresent()) {
+            place = placeOpt.get();
+            place.addTag(tag);
+            placeRepository.edit(id, place);
+        } else {
+            new PlaceNotFoundException("No se ha podido encontrar el lugar con ID %d".formatted(id));
+        }
+        return place;
+    }
 
-        Optional<Place> place =
-        if(placeOpt.)
+    public Place deleteTagFromPlace(Long id, String tag) {
+        // Buscar el place
+        // Eliminar el tag
+        // Modificar el place
+        Optional<Place> placeOpt = placeRepository.get(id);
+        Place place = null;
+        if (placeOpt.isPresent()) {
+            place = placeOpt.get();
+            place.removeTag(tag);
+            placeRepository.edit(id, place);
+        } else {
+            throw new PlaceNotFoundException("No se ha podido encontrar el lugar con ID %d".formatted(id));
+        }
+        return place;
+
     }
 
     public Place getById(Long id) {

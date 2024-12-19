@@ -71,16 +71,15 @@ public class PlaceRepository {
         }));
     }
 
-    public Optional<Place> editTag(){
-        return Optional.ofNullable(places.computeIfPresent(id, (k,v)-> {
-            v.se
-        }))
+    public Optional<Place> completeEdit(Long id, Place place) {
+        return Optional.ofNullable(places.computeIfPresent(id, (k, v) -> {
+            return place;
+        }));
     }
 
     public void delete(Long id) {
         places.remove(id);
     }
-
 
 
 }

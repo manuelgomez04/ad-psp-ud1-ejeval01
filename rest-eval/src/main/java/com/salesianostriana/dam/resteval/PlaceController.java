@@ -43,16 +43,20 @@ public class PlaceController {
         return placeService.edit(id, dto.toPlace());
     }
 
-    @PutMapping("/{id}/tag/add/{nuevo_tag}  ")
-    public Place addTag(@PathVariable Long id, @PathVariable String nuevoTag) {
-        placeService.getById(id).addTag(nuevoTag);
-        return placeService.getById(id);
+    @PutMapping("{id}/tag/add/{tag}")
+    public Place addTag(
+            @PathVariable Long id,
+            @PathVariable String tag
+    ) {
+        return placeService.addTagToPlace(id, tag);
     }
 
-    @PutMapping("/{id}/tag/del/{tag}")
-    public Place removeTag(@PathVariable Long id, @PathVariable String tag) {
-        placeService.getById(id).removeTag(dto.toPlace().getTags();
-        return placeService.getById(id);
+    @PutMapping("{id}/tag/del/{tag}")
+    public Place delTag(
+            @PathVariable Long id,
+            @PathVariable String tag
+    ) {
+        return placeService.deleteTagFromPlace(id, tag);
     }
 
     @DeleteMapping("/{id}")
